@@ -1,0 +1,167 @@
+> db.product.find( {"_id":"85123A"})
+
+{ "_id" : "85123A", "Description" : "WHITE HANGING HEART T-LIGHT HOLDER", "Quantity" : 504, "Price" : 2.55 }
+
+
+
+> var schema = db.product.findOne();
+> for (var key in schema){print (key);}
+_id
+Description
+Quantity
+Price
+>
+
+> var schema = db.customer.findOne();
+> for (var key in schema){print (key);}
+_id
+product_id
+Date
+Quantity
+Unit Price
+Total Cost
+CustomerID
+Country
+>
+
+
+
+> db.customer.aggregate ([ {$match :{product_id :{$eq:"85123A"}}},{ $group :{_id:{ product_id:"$product_id", pur_date:{ $dateToString :{ format :"%m",date:"$Date"}}}, total:{$sum:"$Quantity"}}}]);
+{ "_id" : { "product_id" : "85123A", "pur_date" : "11" }, "total" : 13 }
+{ "_id" : { "product_id" : "85123A", "pur_date" : "05" }, "total" : 12 }
+{ "_id" : { "product_id" : "85123A", "pur_date" : "06" }, "total" : 2 }
+{ "_id" : { "product_id" : "85123A", "pur_date" : "12" }, "total" : 12 }
+{ "_id" : { "product_id" : "85123A", "pur_date" : "01" }, "total" : 9 }
+{ "_id" : { "product_id" : "85123A", "pur_date" : "04" }, "total" : 1 }
+
+
+
+
+> db.product.find({Quantity :{$lt:2}})
+{ "_id" : "21166", "Description" : "COOK WITH WINE METAL SIGN ", "Quantity" : 1, "Price" : 1.95 }
+{ "_id" : "84880", "Description" : "WHITE WIRE EGG HOLDER", "Quantity" : 1, "Price" : 4.95 }
+{ "_id" : "22915", "Description" : "ASSORTED BOTTLE TOP  MAGNETS ", "Quantity" : 0, "Price" : 0.42 }
+{ "_id" : "22968", "Description" : "ROSE COTTAGE KEEPSAKE BOX ", "Quantity" : 1, "Price" : 8.5 }
+{ "_id" : "84030E", "Description" : "ENGLISH ROSE HOT WATER BOTTLE", "Quantity" : 1, "Price" : 3.75 }
+{ "_id" : "21980", "Description" : "PACK OF 12 RED RETROSPOT TISSUES ", "Quantity" : 1, "Price" : 0.29 }
+{ "_id" : "22557", "Description" : "PLASTERS IN TIN VINTAGE PAISLEY ", "Quantity" : 1, "Price" : 1.65 }
+{ "_id" : "22473", "Description" : "TV DINNER TRAY VINTAGE PAISLEY", "Quantity" : 1, "Price" : 4.95 }
+{ "_id" : "84510A", "Description" : "SET OF 4 ENGLISH ROSE COASTERS", "Quantity" : 0, "Price" : 1.25 }
+{ "_id" : "22716", "Description" : "CARD CIRCUS PARADE", "Quantity" : 1, "Price" : 0.42 }
+{ "_id" : "21824", "Description" : "PAINTED METAL STAR WITH HOLLY BELLS", "Quantity" : 0, "Price" : 1.45 }
+{ "_id" : "22186", "Description" : "RED STAR CARD HOLDER", "Quantity" : 1, "Price" : 2.95 }
+{ "_id" : "21135", "Description" : "VICTORIAN  METAL POSTCARD SPRING", "Quantity" : 1, "Price" : 1.69 }
+{ "_id" : "22819", "Description" : "BIRTHDAY CARD, RETRO SPOT", "Quantity" : 1, "Price" : 0.42 }
+{ "_id" : "21982", "Description" : "PACK OF 12 SUKI TISSUES ", "Quantity" : 1, "Price" : 0.29 }
+{ "_id" : "22976", "Description" : "CIRCUS PARADE CHILDRENS EGG CUP ", "Quantity" : 1, "Price" : 2.51 }
+{ "_id" : "35957", "Description" : "SMALLFOLKART BAUBLE CHRISTMAS DEC", "Quantity" : 1, "Price" : 1.66 }
+{ "_id" : "85017B", "Description" : "ENVELOPE 50 BLOSSOM IMAGES", "Quantity" : 1, "Price" : 0.85 }
+{ "_id" : "84581", "Description" : "DOG TOY WITH PINK CROCHET SKIRT", "Quantity" : 1, "Price" : 4.21 }
+{ "_id" : "17003", "Description" : "BROCADE RING PURSE ", "Quantity" : 1, "Price" : 0.43 }
+Type "it" for more
+> it
+{ "_id" : "17129F", "Description" : "BLUE GLASS GEMS IN BAG", "Quantity" : 1, "Price" : 1.66 }
+{ "_id" : "20770", "Description" : "ABSTRACT CIRCLE JOURNAL ", "Quantity" : 1, "Price" : 2.51 }
+{ "_id" : "21000", "Description" : "ROSE DU SUD COSMETICS BAG", "Quantity" : 1, "Price" : 3.36 }
+{ "_id" : "84997A", "Description" : "GREEN 3 PIECE POLKADOT CUTLERY SET", "Quantity" : 1, "Price" : 3.75 }
+{ "_id" : "22136", "Description" : "LOVE HEART SOCK HANGER", "Quantity" : 1, "Price" : 1.65 }
+{ "_id" : "20699", "Description" : "MOUSEY LONG LEGS SOFT TOY", "Quantity" : 1, "Price" : 5.06 }
+{ "_id" : "22924", "Description" : "FRIDGE MAGNETS LA VIE EN ROSE", "Quantity" : 1, "Price" : 0.85 }
+{ "_id" : "20967", "Description" : "GREY FLORAL FELTCRAFT SHOULDER BAG", "Quantity" : 1, "Price" : 3.75 }
+{ "_id" : "20986", "Description" : "BLUE CALCULATOR RULER", "Quantity" : 0, "Price" : 1.25 }
+{ "_id" : "21239", "Description" : "PINK  POLKADOT CUP", "Quantity" : 1, "Price" : 0.85 }
+{ "_id" : "72133", "Description" : "COLUMBIAN CANDLE RECTANGLE", "Quantity" : 1, "Price" : 1.25 }
+{ "_id" : "90195B", "Description" : "BLACK GEMSTONE BRACELET", "Quantity" : 1, "Price" : 8.95 }
+{ "_id" : "84683", "Description" : "CLASSICAL ROSE CANDLESTAND", "Quantity" : 1, "Price" : 1.25 }
+{ "_id" : "22132", "Description" : "RED LOVE HEART SHAPE CUP", "Quantity" : 1, "Price" : 1.66 }
+{ "_id" : "22882", "Description" : "NUMBER TILE VINTAGE FONT 3", "Quantity" : 1, "Price" : 4.21 }
+{ "_id" : "84927A", "Description" : "WAKE UP COCKEREL TILE HOOK", "Quantity" : 1, "Price" : 4.21 }
+{ "_id" : "84927F", "Description" : "PSYCHEDELIC TILE HOOK", "Quantity" : 1, "Price" : 4.21 }
+{ "_id" : "21051", "Description" : "RIBBONS PURSE ", "Quantity" : 1, "Price" : 4.21 }
+{ "_id" : "21675", "Description" : "BUTTERFLIES STICKERS", "Quantity" : 1, "Price" : 1.66 }
+{ "_id" : "22859", "Description" : "EASTER TIN BUNNY BOUQUET", "Quantity" : 1, "Price" : 1.65 }
+Type "it" for more
+> it
+{ "_id" : "20702", "Description" : "PINK PADDED MOBILE", "Quantity" : 1, "Price" : 4.25 }
+{ "_id" : "21693", "Description" : "SMALL HAMMERED SILVER CANDLEPOT ", "Quantity" : 1, "Price" : 2.95 }
+
+
+
+
+
+> db.customer.aggregate([
+... {
+... $lookup :{
+... from :"product",
+... localField:"product_id",
+... foreignField:"_id",
+... as :"product_docs"}}])
+{ "_id" : "536365", "product_id" : "85123A", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 6, "Unit Price" : 2.55, "Total Cost" : 15.3, "CustomerID" : 17850, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "85123A", "Description" : "WHITE HANGING HEART T-LIGHT HOLDER", "Quantity" : 504, "Price" : 2.55 } ] }
+{ "_id" : "536366", "product_id" : "71053", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 6, "Unit Price" : 3.39, "Total Cost" : 20.34, "CustomerID" : 17850, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "71053", "Description" : "WHITE METAL LANTERN", "Quantity" : 2375, "Price" : 3.39 } ] }
+{ "_id" : "536367", "product_id" : "84406B", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 32, "Unit Price" : 2.75, "Total Cost" : 88, "CustomerID" : 13047, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "84406B", "Description" : "CREAM CUPID HEARTS COAT HANGER", "Quantity" : 7854, "Price" : 2.75 } ] }
+{ "_id" : "536368", "product_id" : "84029G", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 6, "Unit Price" : 3.39, "Total Cost" : 20.34, "CustomerID" : 13047, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "84029G", "Description" : "KNITTED UNION FLAG HOT WATER BOTTLE", "Quantity" : 18902, "Price" : 3.39 } ] }
+{ "_id" : "536369", "product_id" : "84029E", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 3, "Unit Price" : 3.39, "Total Cost" : 10.17, "CustomerID" : 13047, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "84029E", "Description" : "RED WOOLLY HOTTIE WHITE HEART.", "Quantity" : 1379, "Price" : 3.39 } ] }
+{ "_id" : "536370", "product_id" : "22752", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 24, "Unit Price" : 7.65, "Total Cost" : 183.6, "CustomerID" : 12583, "Country" : "France", "product_docs" : [ { "_id" : "22752", "Description" : "SET 7 BABUSHKA NESTING BOXES", "Quantity" : 16081, "Price" : 7.65 } ] }
+{ "_id" : "536371", "product_id" : "21730", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 80, "Unit Price" : 4.25, "Total Cost" : 340, "CustomerID" : 13748, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "21730", "Description" : "GLASS STAR FROSTED T-LIGHT HOLDER", "Quantity" : 4406, "Price" : 4.25 } ] }
+{ "_id" : "536372", "product_id" : "22633", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 6, "Unit Price" : 1.85, "Total Cost" : 11.1, "CustomerID" : 17850, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "22633", "Description" : "HAND WARMER UNION JACK", "Quantity" : 1202, "Price" : 1.85 } ] }
+{ "_id" : "536373", "product_id" : "22632", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 6, "Unit Price" : 1.85, "Total Cost" : 11.1, "CustomerID" : 17850, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "22632", "Description" : "HAND WARMER RED POLKA DOT", "Quantity" : 1176, "Price" : 1.85 } ] }
+{ "_id" : "536374", "product_id" : "84879", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 32, "Unit Price" : 1.69, "Total Cost" : 54.08, "CustomerID" : 15100, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "84879", "Description" : "ASSORTED COLOUR BIRD ORNAMENT", "Quantity" : 2824, "Price" : 1.69 } ] }
+{ "_id" : "536375", "product_id" : "22745", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 6, "Unit Price" : 2.1, "Total Cost" : 12.6, "CustomerID" : 17850, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "22745", "Description" : "POPPY'S PLAYHOUSE BEDROOM ", "Quantity" : 3818, "Price" : 2.1 } ] }
+{ "_id" : "536376", "product_id" : "22748", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 48, "Unit Price" : 2.1, "Total Cost" : 100.8, "CustomerID" : 15291, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "22748", "Description" : "POPPY'S PLAYHOUSE KITCHEN", "Quantity" : 775, "Price" : 2.1 } ] }
+{ "_id" : "536377", "product_id" : "22749", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 6, "Unit Price" : 3.75, "Total Cost" : 22.5, "CustomerID" : 17850, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "22749", "Description" : "FELTCRAFT PRINCESS CHARLOTTE DOLL", "Quantity" : 3239, "Price" : 3.75 } ] }
+{ "_id" : "536378", "product_id" : "22310", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 10, "Unit Price" : 1.65, "Total Cost" : 16.5, "CustomerID" : 14688, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "22310", "Description" : "IVORY KNITTED MUG COSY ", "Quantity" : 2277, "Price" : 1.65 } ] }
+{ "_id" : "536380", "product_id" : "84969", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 24, "Unit Price" : 4.25, "Total Cost" : 102, "CustomerID" : 17809, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "84969", "Description" : "BOX OF 6 ASSORTED COLOUR TEASPOONS", "Quantity" : 4209, "Price" : 4.25 } ] }
+{ "_id" : "536381", "product_id" : "22623", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 23, "Unit Price" : 4.95, "Total Cost" : 113.85, "CustomerID" : 15311, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "22623", "Description" : "BOX OF VINTAGE JIGSAW BLOCKS ", "Quantity" : 291, "Price" : 4.95 } ] }
+{ "_id" : "C536379", "product_id" : "22622", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 1, "Unit Price" : 9.95, "Total Cost" : 9.95, "CustomerID" : 14527, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "22622", "Description" : "BOX OF VINTAGE ALPHABET BLOCKS", "Quantity" : 531, "Price" : 9.95 } ] }
+{ "_id" : "536382", "product_id" : "21754", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 12, "Unit Price" : 5.95, "Total Cost" : 71.4, "CustomerID" : 16098, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "21754", "Description" : "HOME BUILDING BLOCK WORD", "Quantity" : 197, "Price" : 5.95 } ] }
+{ "_id" : "C536383", "product_id" : "21755", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 1, "Unit Price" : 5.95, "Total Cost" : 5.95, "CustomerID" : 15311, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "21755", "Description" : "LOVE BUILDING BLOCK WORD", "Quantity" : 593, "Price" : 5.95 } ] }
+{ "_id" : "536384", "product_id" : "21777", "Date" : ISODate("2011-01-11T18:30:00Z"), "Quantity" : 3, "Unit Price" : 7.95, "Total Cost" : 23.85, "CustomerID" : 18074, "Country" : "United Kingdom", "product_docs" : [ { "_id" : "21777", "Description" : "RECIPE BOX WITH METAL HEART", "Quantity" : 18, "Price" : 7.95 } ] }
+Type "it" for more
+>
+
+
+
+
+
+
+
+
+
+
+
+
+
+no cursor
+> db.customer.aggregate([
+... {
+... $lookup:{
+... from :"product",
+... localField :"product_id",
+... foreignField :"_id",
+... as :"product_docs"
+... }},{
+... $project :{product_id : 1 , Date :1 , CustomerID:1,product_docs:1}}])
+{ "_id" : "536365", "product_id" : "85123A", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 17850, "product_docs" : [ { "_id" : "85123A", "Description" : "WHITE HANGING HEART T-LIGHT HOLDER", "Quantity" : 504, "Price" : 2.55 } ] }
+{ "_id" : "536366", "product_id" : "71053", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 17850, "product_docs" : [ { "_id" : "71053", "Description" : "WHITE METAL LANTERN", "Quantity" : 2375, "Price" : 3.39 } ] }
+{ "_id" : "536367", "product_id" : "84406B", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 13047, "product_docs" : [ { "_id" : "84406B", "Description" : "CREAM CUPID HEARTS COAT HANGER", "Quantity" : 7854, "Price" : 2.75 } ] }
+{ "_id" : "536368", "product_id" : "84029G", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 13047, "product_docs" : [ { "_id" : "84029G", "Description" : "KNITTED UNION FLAG HOT WATER BOTTLE", "Quantity" : 18902, "Price" : 3.39 } ] }
+{ "_id" : "536369", "product_id" : "84029E", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 13047, "product_docs" : [ { "_id" : "84029E", "Description" : "RED WOOLLY HOTTIE WHITE HEART.", "Quantity" : 1379, "Price" : 3.39 } ] }
+{ "_id" : "536370", "product_id" : "22752", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 12583, "product_docs" : [ { "_id" : "22752", "Description" : "SET 7 BABUSHKA NESTING BOXES", "Quantity" : 16081, "Price" : 7.65 } ] }
+{ "_id" : "536371", "product_id" : "21730", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 13748, "product_docs" : [ { "_id" : "21730", "Description" : "GLASS STAR FROSTED T-LIGHT HOLDER", "Quantity" : 4406, "Price" : 4.25 } ] }
+{ "_id" : "536372", "product_id" : "22633", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 17850, "product_docs" : [ { "_id" : "22633", "Description" : "HAND WARMER UNION JACK", "Quantity" : 1202, "Price" : 1.85 } ] }
+{ "_id" : "536373", "product_id" : "22632", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 17850, "product_docs" : [ { "_id" : "22632", "Description" : "HAND WARMER RED POLKA DOT", "Quantity" : 1176, "Price" : 1.85 } ] }
+{ "_id" : "536374", "product_id" : "84879", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 15100, "product_docs" : [ { "_id" : "84879", "Description" : "ASSORTED COLOUR BIRD ORNAMENT", "Quantity" : 2824, "Price" : 1.69 } ] }
+{ "_id" : "536375", "product_id" : "22745", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 17850, "product_docs" : [ { "_id" : "22745", "Description" : "POPPY'S PLAYHOUSE BEDROOM ", "Quantity" : 3818, "Price" : 2.1 } ] }
+{ "_id" : "536376", "product_id" : "22748", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 15291, "product_docs" : [ { "_id" : "22748", "Description" : "POPPY'S PLAYHOUSE KITCHEN", "Quantity" : 775, "Price" : 2.1 } ] }
+{ "_id" : "536377", "product_id" : "22749", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 17850, "product_docs" : [ { "_id" : "22749", "Description" : "FELTCRAFT PRINCESS CHARLOTTE DOLL", "Quantity" : 3239, "Price" : 3.75 } ] }
+{ "_id" : "536378", "product_id" : "22310", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 14688, "product_docs" : [ { "_id" : "22310", "Description" : "IVORY KNITTED MUG COSY ", "Quantity" : 2277, "Price" : 1.65 } ] }
+{ "_id" : "536380", "product_id" : "84969", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 17809, "product_docs" : [ { "_id" : "84969", "Description" : "BOX OF 6 ASSORTED COLOUR TEASPOONS", "Quantity" : 4209, "Price" : 4.25 } ] }
+{ "_id" : "536381", "product_id" : "22623", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 15311, "product_docs" : [ { "_id" : "22623", "Description" : "BOX OF VINTAGE JIGSAW BLOCKS ", "Quantity" : 291, "Price" : 4.95 } ] }
+{ "_id" : "C536379", "product_id" : "22622", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 14527, "product_docs" : [ { "_id" : "22622", "Description" : "BOX OF VINTAGE ALPHABET BLOCKS", "Quantity" : 531, "Price" : 9.95 } ] }
+{ "_id" : "536382", "product_id" : "21754", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 16098, "product_docs" : [ { "_id" : "21754", "Description" : "HOME BUILDING BLOCK WORD", "Quantity" : 197, "Price" : 5.95 } ] }
+{ "_id" : "C536383", "product_id" : "21755", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 15311, "product_docs" : [ { "_id" : "21755", "Description" : "LOVE BUILDING BLOCK WORD", "Quantity" : 593, "Price" : 5.95 } ] }
+{ "_id" : "536384", "product_id" : "21777", "Date" : ISODate("2011-01-11T18:30:00Z"), "CustomerID" : 18074, "product_docs" : [ { "_id" : "21777", "Description" : "RECIPE BOX WITH METAL HEART", "Quantity" : 18, "Price" : 7.95 } ] }
+
+
+
+
